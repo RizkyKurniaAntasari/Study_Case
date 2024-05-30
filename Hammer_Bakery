@@ -2,9 +2,25 @@
 #include <fstream>
 using namespace std;
 
+
 string nama,pass;
+string j_kue,r_kue,u_kue,i_kue,h_kue;
 bool log = false;
 bool active = true;
+char milih_kue;
+
+void kue(){
+    cout << "1. Kue Tart\n";
+    cout << "2. Kue Madu\n";
+    cout << "3. Kue Butter\n";
+}
+
+void menu_utama(){
+    cout << "\nSelamat datang di Hammer Bakery\n";
+    cout << "Silahkan lihat-lihat !\n";
+    kue();
+}
+
 
 void login(){
     string a,b;
@@ -34,5 +50,54 @@ void daftar(){
 int main(){
     char pilihan;
  
+
+    while(active){
+        cout << "\n1. daftar\n";
+        cout << "2. login\n";
+        cout << "3. exit\n";
+        cout << "mau ngapain : ";
+        cin >> pilihan;
+        switch (pilihan)
+        {
+        case '1':
+            daftar();
+            break;
+        case '2':
+            login();
+            break;
+        case '3':
+            active = false;
+            break;
+        default:
+            break;
+        }
+        
+    while(log){
+        char pesan;
+        menu_utama();
+        cout << "Mau pesan (y/n) : "; cin >> pesan;
+
+        switch (pesan)
+        {
+        case 'y':
+            cout << "Berikut pilihannya !\n";
+            kue();
+            pilih_kue();
+            break;
+        case 'n':
+            log = false;
+            cout << "Terimakasih Telah Berkujung, " << nama << "!\n"; 
+            break;
+        default:
+            cout << "Pilihan tidak valid !";
+            break;
+        }
+    
+
+    }
+
+
+
+    }// penutup while
     return 0;
 }
