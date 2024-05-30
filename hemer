@@ -1,53 +1,120 @@
 #include <iostream>
 using namespace std;
 
-class Bakery {
+class Bakery
+{
 private:
     string name, pass;
+    string j_kue,h_kue,
+                u_kue = "Sedang",
+                i_kue = "Keju",
+                r_kue = "Vanilla";
+
     bool masuk = false;
 
 public:
-    void regist() {
+    void regist()
+    {
         cout << "nama: ";
         cin >> name;
         cout << "pass: ";
         cin >> pass;
     }
 
-    void login() {
+    void login()
+    {
         string a, b;
         cout << "nama: ";
         cin >> a;
         cout << "pass: ";
         cin >> b;
 
-        if (a == name && b == pass) {
+        if (a == name && b == pass)
+        {
             cout << "Berhasil!\n";
             masuk = true;
-        } else {
+        }
+        else
+        {
             cout << "pass/acc salah!\n";
         }
     }
 
-    void list_costume(){
+    void costume_rasa()
+    {
+        char rasa;
+
+        cout << "Rasa apa ?\n";
+        cout << "1. Vanilla\n";
+        cout << "2. Coklat\n";
+        cout << "Jawab : ";
+        cin >> rasa;
+
+        if (rasa == '1')
+            r_kue = "Vanilla";
+        else if (rasa == '2')
+            r_kue = "Coklat";
+    }
+
+    void costume_ukuran()
+    {
+        char ukuran;
+
+        cout << "Rasa apa ?\n";
+        cout << "1. Besar\n";
+        cout << "2. Sedang\n";
+        cout << "Jawab : ";
+        cin >> ukuran;
+
+        if (ukuran == '1')
+            u_kue = "Besar";
+        else if (ukuran == '2')
+            u_kue = "Sedang";
+    }
+
+    void costume_isi()
+    {
+        char isi;
+
+        cout << "Rasa apa ?\n";
+        cout << "1. Ayam\n";
+        cout << "2. Ikan\n";
+        cout << "3. Keju\n";
+        cout << "Jawab : ";
+        cin >> isi;
+
+        if (isi == '1')
+            i_kue = "Ayam";
+        else if (isi == '2')
+            i_kue = "Ikan";
+        else if (isi == '3')
+            i_kue = "Keju";
+    }
+
+    void costume_list()
+    {
         cout << "1. Rasa\n";
         cout << "2. Ukuran\n";
         cout << "3. Isi\n";
+        cout << "4. Default\n";
     }
 
-    void kue() {
+    void kue()
+    {
         cout << "1. Kue Tart\n";
         cout << "2. Kue Madu\n";
         cout << "3. Kue Butter\n";
     }
 
-    void greetingHammer() {
+    void greetingHammer()
+    {
         cout << "\nSelamat datang di Hammer Bakery\n";
         cout << "Silahkan lihat-lihat!\n";
         kue();
     }
 
-    void greeting() {
+    void greeting()
+    {
         cout << "Hello\n";
         cout << "1. login\n";
         cout << "2. daftar\n";
@@ -55,98 +122,117 @@ public:
         cout << "jawaban: ";
     }
 
-    void kostum(){
-        char kueCostume;
-        list_costume();
-
-        cout << "Pilih (1/2/3)";
-        cin >> kueCostume;
-        switch (kueCostume)
+    void costume_kue()
+    {   bool masih_milih = true;
+        while (masih_milih)
         {
-        case '1':
-            
-            break;
-        
-        case '2':
-            break;
+            char kueCostume;
+            costume_list();
 
-        case '3':
+            cout << "Pilih (1/2/3/4)";
+            cin >> kueCostume;
+            switch (kueCostume)
+            {
+            case '1':
+                costume_rasa();
+                break;
 
-            break;
+            case '2':
+                costume_ukuran();
+                break;
 
-        default:
-            break;
+            case '3':
+                costume_isi();
+                break;
+            case '4':
+                cetak_
+                masih_milih = false;
+                break;
+            default:
+                cout << "Opsi tidak sesuai !\n";
+                break;
+            }
         }
     }
 
-    void pesanan() {
+    void pesanan()
+    {
         char kueChoice;
         kue();
         cout << "Pilih kue (1/2/3): ";
         cin >> kueChoice;
 
-        switch (kueChoice) {
-            case '1':
-                cout << "Anda memilih Kue Tart.\n";
-                break;
-            case '2':
-                cout << "Anda memilih Kue Madu.\n";
-                break;
-            case '3':
-                cout << "Anda memilih Kue Butter.\n";
-                break;
-            default:
-                cout << "Pilihan tidak valid!\n";
-                break;
+        switch (kueChoice)
+        {
+        case '1':
+            cout << "Anda memilih Kue Tart.\n";
+            j_kue = "Tart";
+            break;
+        case '2':
+            cout << "Anda memilih Kue Madu.\n";
+            break;
+        case '3':
+            cout << "Anda memilih Kue Butter.\n";
+            break;
+        default:
+            cout << "Pilihan tidak valid!\n";
+            break;
         }
+        costume_kue();
     }
 
-    void run() {
+    void run()
+    {
         bool active = true;
         char menu;
 
-        while (active) {
+        while (active)
+        {
             greeting();
             cin >> menu;
 
-            switch (menu) {
-                case '1':
-                    login();
-                    break;
-                case '2':
-                    regist();
-                    break;
-                case '3':
-                    active = false;
-                    break;
-                default:
-                    cout << "opsi tidak sesuai!\n";
-                    break;
+            switch (menu)
+            {
+            case '1':
+                login();
+                break;
+            case '2':
+                regist();
+                break;
+            case '3':
+                active = false;
+                break;
+            default:
+                cout << "opsi tidak sesuai!\n";
+                break;
             }
 
-            while (masuk) {
+            while (masuk)
+            {
                 char pesan;
                 greetingHammer();
                 cout << "mau pesen (y/n): ";
                 cin >> pesan;
 
-                switch (pesan) {
-                    case 'y':
-                        pesanan();
-                        break;
-                    case 'n':
-                        masuk = false;
-                        break;
-                    default:
-                        cout << "Pilihan tidak valid!\n";
-                        break;
+                switch (pesan)
+                {
+                case 'y':
+                    pesanan();
+                    break;
+                case 'n':
+                    masuk = false;
+                    break;
+                default:
+                    cout << "Pilihan tidak valid!\n";
+                    break;
                 }
             }
         }
     }
 };
 
-int main() {
+int main()
+{
     Bakery bakery;
     bakery.run();
     return 0;
