@@ -7,7 +7,25 @@ string nama,pass;
 string j_kue,r_kue,u_kue,i_kue,h_kue;
 bool log = false;
 bool active = true;
-char milih_kue;
+string milih_kue;
+
+void kosumisasi(){
+    cout << "1. Rasa\n";
+    cout << "2. Ukuran\n";
+    cout << "3. isi\n";
+}
+
+void simpan_struk(){
+
+}
+
+void pilih_kue(){
+    cin >> milih_kue;
+    if(milih_kue == "1") j_kue = "Tart";
+    else if(milih_kue == "2") j_kue = "Madu";
+    else if(milih_kue == "3") j_kue = "Butter";
+
+}
 
 void kue(){
     cout << "1. Kue Tart\n";
