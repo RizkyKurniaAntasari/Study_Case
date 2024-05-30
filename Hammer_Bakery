@@ -13,16 +13,34 @@ string milih_rasa;
 string milih_ukuran;
 string milih_isi;
 
-void simpan_struk(){
+void cetak_struk(){
 
 }
 
 void rasa(){
+    char rasa;
+    cout << "1. Vanila\n";
+    cout << "2. Coklat\n";
+    cout << "3. Mentega\n";
+    cout << "4. Matcha\n";
+    cout << "Mau rasa apa ? : "; cin >> rasa;
 
+    if(rasa == '1') r_kue = "Vanilla"; 
+    else if(rasa == '2') r_kue = "Coklat"; 
+    else if(rasa == '3') r_kue = "Mentega"; 
+    else if(rasa == '4') r_kue = "Matcha"; 
 }
 
 void ukuran(){
+    char ukuran;
+    cout << "1. Besar\n";
+    cout << "2. Medium\n";
+    cout << "3. Keci\n";
+    cout << "Mau ukuran apa ? : "; cin >> ukuran;
 
+    if(ukuran == '1') u_kue = "Besar"; 
+    else if(ukuran == '2') u_kue = "Medium"; 
+    else if(ukuran == '3') u_kue = "Kecil"; 
 }
 
 void isi(){
@@ -30,10 +48,32 @@ void isi(){
 }
 
 void kosumisasi(){
-    
     cout << "1. Rasa\n";
     cout << "2. Ukuran\n";
     cout << "3. isi\n";
+    cout << "4. Cetak\n";
+}
+
+void rancang_kue(){
+    char milih_rancangan;
+    switch (milih_rancangan)
+    {
+    case '1':
+        rasa();
+        break;
+    case '2':
+        ukuran();
+        break;
+    case '3':
+        isi();
+        break;
+    case '4':
+        cetak_struk();
+        break;
+    
+    default:
+        break;
+    }
 }
 
 void pilih_kue(){
@@ -117,6 +157,7 @@ int main(){
             kue();
             pilih_kue();
             kosumisasi();
+                rancang_kue();
             break;
         case 'n':
             log = false;
