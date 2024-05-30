@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+string nama,pass;
+bool log = false;
+bool active = true;
+
+void login(){
+    string a,b;
+    cout << "Masukan nama :"; cin >> a;
+    cout << "Password anda : ";  cin >> b;
+
+    if(nama == a && pass == b){
+        cout << "berhasil login !\n";
+        log = true;
+    }
+    else{
+        cout <<"user atau password salah !\n";
+    }
+}
+
+void daftar(){
+    string a,b;
+    cout << "Selamat datang di pendaftaran !\n";
+    cout << "Nama : "; cin >> a;
+    cout << "Pass : "; cin >> b;
+    nama = a;
+    pass = b;
+    cout << "Selamat anda terdaftar, " << nama << '!';
+}
+
+
+int main(){
+    char pilihan;
+ 
+    return 0;
+}
