@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Bakery
@@ -45,10 +46,29 @@ public:
         }
     }
 
+    // <---------------------------------[ S T R U K ]--------------------------------->
+    void printReceiptHeader() {
+    cout << "========================================" << endl;
+    cout << "            Hammer Bakery               " << endl;
+    cout << "       Jl. Pahlawan No. 123, Lampung    " << endl;
+    cout << "         Tel: (4916) 718-1521            " << endl;
+    cout << "========================================" << endl;
+}
+
+    void printReceiptFooter(double h_kue) {
+    cout << "========================================" << endl;
+    cout << fixed << setprecision(2);
+    cout << "Total                : " << "Rp. " << h_kue << endl;
+    cout << "========================================" << endl;
+    cout << "       Terima kasih telah berbelanja!   " << endl;
+}
+
     void cetak_struk()
     {
-
+        printReceiptHeader();
+        printReceiptFooter(100);
     }
+    // <---------------------------------[ C O N F I R M ]--------------------------------->
 
     void cetak_pesanan_kue()
     {
