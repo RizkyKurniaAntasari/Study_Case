@@ -48,24 +48,49 @@ public:
 
     // <---------------------------------[ S T R U K ]--------------------------------->
     void printReceiptHeader() {
-    cout << "========================================" << endl;
-    cout << "            Hammer Bakery               " << endl;
-    cout << "       Jl. Pahlawan No. 123, Lampung    " << endl;
-    cout << "         Tel: (4916) 718-1521            " << endl;
-    cout << "========================================" << endl;
+    cout << "======================================================================" << endl;
+    cout << "                           Hammer Bakery               " << endl;
+    cout << "                      Jl. Pahlawan No. 123, Lampung    " << endl;
+    cout << "                       Tel: (4916) 718-1521            " << endl;
+    cout << "======================================================================" << endl;
 }
 
-    void printReceiptFooter(double h_kue) {
-    cout << "========================================" << endl;
+    void printItems() {
+    cout << left << setw(15) << "Nama Barang"
+         << left << setw(10) << "Rasa"
+         << left << setw(10) << "Isi"
+         << left << setw(10) << "Ukuran"
+         << right << setw(5) << "Qty"
+         << right << setw(10) << "Harga"
+         << right << setw(10) << "Subtotal" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    double total = 0;
+
+        double subtotal = h_kue;
+        cout << left << setw(15) << j_kue
+             << left << setw(10) << r_kue
+             << left << setw(10) << i_kue
+             << left << setw(10) << u_kue
+             << right << setw(5) << 1
+             << right << setw(10) << h_kue
+             << right << setw(10) << subtotal << endl;
+        total += subtotal;
+    
+}
+
+    void printReceiptFooter(double total) {
+    cout << "======================================================================" << endl;
     cout << fixed << setprecision(2);
-    cout << "Total                : " << "Rp. " << h_kue << endl;
-    cout << "========================================" << endl;
+    cout << "Total                : " << "Rp. " << total << endl;
+    cout << "======================================================================" << endl;
     cout << "       Terima kasih telah berbelanja!   " << endl;
 }
 
     void cetak_struk()
     {
         printReceiptHeader();
+        printItems();
         printReceiptFooter(100);
     }
     // <---------------------------------[ C O N F I R M ]--------------------------------->
