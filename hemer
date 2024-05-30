@@ -40,6 +40,10 @@ public:
         }
     }
 
+    void cetak_pesanan_kue(){
+
+    }
+
     void costume_rasa()
     {
         char rasa;
@@ -96,7 +100,7 @@ public:
         cout << "1. Rasa\n";
         cout << "2. Ukuran\n";
         cout << "3. Isi\n";
-        cout << "4. Default\n";
+        cout << "4. Pesan\n";
     }
 
     void kue()
@@ -129,7 +133,7 @@ public:
             char kueCostume;
             costume_list();
 
-            cout << "Pilih (1/2/3/4)";
+            cout << "Pilih (1/2/3/4) : ";
             cin >> kueCostume;
             switch (kueCostume)
             {
@@ -145,8 +149,8 @@ public:
                 costume_isi();
                 break;
             case '4':
-                cetak_
-                masih_milih = false;
+                cetak_pesanan_kue();
+                masih_milih = false; 
                 break;
             default:
                 cout << "Opsi tidak sesuai !\n";
@@ -227,7 +231,7 @@ public:
                     break;
                 }
             }
-        }
+        }// punya active
     }
 };
 
