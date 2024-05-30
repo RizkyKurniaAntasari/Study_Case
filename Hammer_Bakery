@@ -2,25 +2,42 @@
 #include <fstream>
 using namespace std;
 
-
 string nama,pass;
 string j_kue,r_kue,u_kue,i_kue,h_kue;
+
 bool log = false;
 bool active = true;
-string milih_kue;
 
-void kosumisasi(){
-    cout << "1. Rasa\n";
-    cout << "2. Ukuran\n";
-    cout << "3. isi\n";
-}
+string milih_kue;
+string milih_rasa;
+string milih_ukuran;
+string milih_isi;
 
 void simpan_struk(){
 
 }
 
+void rasa(){
+
+}
+
+void ukuran(){
+
+}
+
+void isi(){
+
+}
+
+void kosumisasi(){
+    
+    cout << "1. Rasa\n";
+    cout << "2. Ukuran\n";
+    cout << "3. isi\n";
+}
+
 void pilih_kue(){
-    cin >> milih_kue;
+    cout << "Mau kue apa ? : "; cin >> milih_kue;
     if(milih_kue == "1") j_kue = "Tart";
     else if(milih_kue == "2") j_kue = "Madu";
     else if(milih_kue == "3") j_kue = "Butter";
@@ -38,7 +55,6 @@ void menu_utama(){
     cout << "Silahkan lihat-lihat !\n";
     kue();
 }
-
 
 void login(){
     string a,b;
@@ -63,7 +79,6 @@ void daftar(){
     pass = b;
     cout << "Selamat anda terdaftar, " << nama << '!';
 }
-
 
 int main(){
     char pilihan;
@@ -101,6 +116,7 @@ int main(){
             cout << "Berikut pilihannya !\n";
             kue();
             pilih_kue();
+            kosumisasi();
             break;
         case 'n':
             log = false;
@@ -113,7 +129,6 @@ int main(){
     
 
     }
-
 
 
     }// penutup while
