@@ -1,16 +1,28 @@
+// <---------------------------------- [ A S L I ] ---------------------------------->
+// #include "Another_hammer.cpp"
+// int main(){
+//     Bakery bakery;
+//     bakery.run();
+//     return 0;
+// }
+
+// <---------------------------------- [ D E V E L O P ] ---------------------------------->
+
 #include <iostream>
 #include <iomanip>
+#include <vector>
+#include <deque>
 #include <string>
 using namespace std;
 
-class Bakery
+struct Bakery
 {
-private:
+//private:
     string name, pass;
-    string j_kue,
-        u_kue = "Sedang",
-        i_kue = "Keju",
-        r_kue = "Vanilla";
+    string j_kue, // u_kue, i_kue, r_kue;
+           u_kue = "Sedang",
+           i_kue = "Keju",
+           r_kue = "Vanilla";
 
     bool masuk = false;
     bool active = true;
@@ -321,7 +333,24 @@ public:
 
 int main()
 {
-    Bakery bakery;
-    bakery.run();
+    vector <Bakery> item;
+    Bakery temp;
+
+    Bakery bakery;// utama
+    bakery.run(); // utama
+
+    temp.u_kue = "Extra";
+    temp.h_kue = 1000;
+    temp.j_kue = "AKAKA";
+    
+    item.push_back(temp);
+
+    for(const auto & i : item){
+        cout << endl <<    i.u_kue << endl
+                     <<    i.h_kue  << endl 
+                     <<    i.j_kue; 
+    }
+
+
     return 0;
 }
