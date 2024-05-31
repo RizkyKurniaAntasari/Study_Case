@@ -1,0 +1,49 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+struct ITEM{
+  string nama,npm;  
+};
+
+struct LMAO{
+  string kelas,jam;  
+};
+
+  void printItem(const vector<ITEM>&items){
+      for(const auto & item : items ){
+          cout << "Name : " << item.nama << endl;
+          cout << "NPM  : " << (item).npm << endl;
+      }
+  }
+  
+  void printItem(const vector<LMAO> & lol){
+      for(const auto & i : lol){
+          cout << "Jam   : " << i.jam << endl;
+          cout << "Kelas : " << i.kelas << endl;
+      }
+  }
+
+
+int main()
+{
+    vector<ITEM> items = {
+        {"2323","2121"},
+        {"kurnia","rizky"}
+    };
+    
+    vector <LMAO> lol;
+    LMAO temp;
+    cin >> temp.kelas >> temp.jam;
+    
+    lol.push_back(temp);
+    
+    
+    printItem(items);
+    
+    cout << endl;
+    
+    printItem(lol);
+
+    return 0;
+}
