@@ -12,6 +12,7 @@
 #include <deque>
 #include <string>
 #include <fstream>
+#include <cstring>
 using namespace std;
 
 struct User{
@@ -38,6 +39,7 @@ private:
 
 
     char confirm;
+    char kustom_tulisan[];
 
 public:
 
@@ -72,11 +74,11 @@ public:
 
     // <---------------------------------[ S T R U K ]--------------------------------->
     void printReceiptHeader(ofstream& file) {
-        file << "======================================================================" << endl;
+        file << "===================================================================================" << endl;
         file << "                           Hammer Bakery               " << endl;
         file << "                      Jl. Pahlawan No. 123, Lampung    " << endl;
         file << "                       Tel: (4916) 718-1521            " << endl;
-        file << "======================================================================" << endl;
+        file << "===================================================================================" << endl;
     }
 
     void printItems(ofstream& file) {
@@ -84,16 +86,20 @@ public:
             << left << setw(10) << "Rasa"
             << left << setw(10) << "Isi"
             << left << setw(10) << "Ukuran"
+            << left << setw(10) << "Tulisan"
             << right << setw(5) << "Qty"
             << right << setw(10) << "Harga"
             << right << setw(10) << "Subtotal" << endl;
-        file << "----------------------------------------------------------------------" << endl;
+        file << "-----------------------------------------------------------------------------------" << endl;
+
+        double total = 0;
 
         double subtotal = h_kue;
-        file << left << setw(15) << j_kue
+        file << left << setw(15) << "Kue " + j_kue
             << left << setw(10) << r_kue
             << left << setw(10) << i_kue
             << left << setw(10) << u_kue
+            << right << setw(10) << strlen(kustom_tulisan)
             << right << setw(5) << 1
             << right << setw(10) << h_kue
             << right << setw(10) << subtotal << endl;
@@ -101,10 +107,10 @@ public:
     }
 
     void printReceiptFooter(ofstream& file, double total) {
-        file << "======================================================================" << endl;
+        file << "===================================================================================" << endl;
         file << fixed << setprecision(2);
         file << "Total                : " << "Rp. " << total << endl;
-        file << "======================================================================" << endl;
+        file << "===================================================================================" << endl;
         file << "       Terima kasih telah berbelanja!   " << endl;
     }
 
@@ -131,6 +137,7 @@ public:
         cout << "\nRasa   : " << r_kue;
         cout << "\nUkuran : " << u_kue;
         cout << "\nIsi    : " << i_kue;
+        cout << "\nTulisan: " << kustom_tulisan;
         cout << "\nHarga  : " << h_kue;
         cout << "\n____________________";
 
@@ -219,13 +226,20 @@ public:
     //     else if (isi == '3')
     //         i_kue = "Keju";
     // }
+    
+    void custome_tulisan() {
+    cout << "Masukkan tulisan kustom : ";
+    cin.ignore();
+    cin.getline(kustom_tulisan, 1000);
+}
 
     void costume_list()
     {
         cout << "1. Rasa\n";
         cout << "2. Ukuran\n";
+        cout << "3. Tulisan\n";
         //cout << "3. Isi\n";
-        cout << "3. Pesan\n";
+        cout << "4. Pesan\n";
     }
 
     void costume_kue()
@@ -251,7 +265,12 @@ public:
             // case '3':
             //     costume_isi();
             //     break;
+
             case '3':
+                custome_tulisan();
+                break;
+
+            case '4':
                 cetak_pesanan_kue();
                 masih_milih = false;
                 active = false;
