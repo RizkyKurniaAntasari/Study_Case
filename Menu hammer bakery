@@ -13,10 +13,10 @@ int main()
     cout << "|                  |_|  |_\\___|_||_\\_,_|                     |" << endl;
     cout << "+------------------------------------------------------------+" << endl;
     cout << "|                                                            |" << endl;
-    cout << "|                      ChesseCake                            |" << endl;
+    cout << "|    ChesseCake                                              |" << endl;
     cout << "|                                                            |" << endl;
-    cout << "|       # Burnt ChesseCake   (slice / whole)       20k/65k   |" << endl;
-    cout << "|       # Lotus ChesseCake   (Slice / Whole)       16k/55k   |" << endl;
+    cout << "|       # Burnt ChesseCake   (slice / whole)      20k/65k    |" << endl;
+    cout << "|       # Lotus ChesseCake   (Slice / Whole)      16k/55k    |" << endl;
     cout << "|                                                            |" << endl;
     cout << "|    Brownies                                                |" << endl;
     cout << "|                                                            |" << endl;
