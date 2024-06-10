@@ -27,6 +27,7 @@ private:
     bool active = true;
     bool done = false;
     double h_kue;
+    double total = 0;
 
     char confirm;
 
@@ -77,8 +78,6 @@ public:
             << right << setw(10) << "Subtotal" << endl;
         file << "----------------------------------------------------------------------" << endl;
 
-        double total = 0;
-
         double subtotal = h_kue;
         file << left << setw(15) << "Kue " + j_kue
             << left << setw(10) << r_kue
@@ -105,7 +104,7 @@ public:
         if (outputFile.is_open()) {
             printReceiptHeader(outputFile);
             printItems(outputFile);
-            printReceiptFooter(outputFile, 100);
+            printReceiptFooter(outputFile, total);
             outputFile.close();
             cout << "Struk telah berhasil dicetak ke dalam file 'struk.txt'" << endl;
         } else {
