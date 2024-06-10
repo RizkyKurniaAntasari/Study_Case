@@ -1,5 +1,15 @@
+// <---------------------------------- [ A S L I ] ---------------------------------->
+// #include "Another_hammer.cpp"
+// int main(){
+//     Bakery bakery;
+//     bakery.run();
+//     return 0;
+// }
+
+// <---------------------------------- [ D E V E L O P ] ---------------------------------->
 #include <iostream>
 #include <iomanip>
+#include <deque>
 #include <string>
 #include <fstream>
 using namespace std;
@@ -9,6 +19,7 @@ struct User{
     string pass;
 };
 
+class ORDER;
 class Bakery
 {
 private:
@@ -21,11 +32,17 @@ private:
     bool masuk = false;
     bool active = true;
     bool done = false;
+
     double h_kue;
+    double total = 0;
+
 
     char confirm;
 
 public:
+
+    friend class ORDER;
+
     void regist()
     {
         cout << "nama: ";
@@ -72,10 +89,8 @@ public:
             << right << setw(10) << "Subtotal" << endl;
         file << "----------------------------------------------------------------------" << endl;
 
-        double total = 0;
-
         double subtotal = h_kue;
-        file << left << setw(15) << "Kue " + j_kue
+        file << left << setw(15) << j_kue
             << left << setw(10) << r_kue
             << left << setw(10) << i_kue
             << left << setw(10) << u_kue
@@ -100,7 +115,7 @@ public:
         if (outputFile.is_open()) {
             printReceiptHeader(outputFile);
             printItems(outputFile);
-            printReceiptFooter(outputFile, 100);
+            printReceiptFooter(outputFile, total);
             outputFile.close();
             cout << "Struk telah berhasil dicetak ke dalam file 'struk.txt'" << endl;
         } else {
@@ -148,43 +163,69 @@ public:
     {
         char ukuran;
 
-        cout << "Rasa apa ?\n";
-        cout << "1. Besar\n";
-        cout << "2. Sedang\n";
+        cout << "Ukuran apa ?\n";
+        cout << "1. Whole\n";
+        cout << "2. Slice\n";
         cout << "Jawab : ";
         cin >> ukuran;
 
-        if (ukuran == '1')
-            u_kue = "Besar";
-        else if (ukuran == '2')
-            u_kue = "Sedang";
+        if (ukuran == '1' && j_kue == "Burnt ChesseCake"){
+            u_kue = "Whole";
+            h_kue = 65000;
+        }
+
+        else if (ukuran == '2' && j_kue == "Burnt ChesseCake"){
+            u_kue = "Slice";
+            h_kue = 20000;
+        }
+
+        if(ukuran == '1' && j_kue == "Kue Lotus ChesseCake") {
+            u_kue = "Whole";
+            h_kue = 55000;
+        }
+        else if (ukuran == '2' && j_kue == "Kue Lotus ChesseCake") {
+            u_kue = "Slice";
+            h_kue = 16000;
+        }
+
+        if(ukuran == '1' && j_kue == "Brownies Bites"){
+            u_kue = "16 pcs";
+            h_kue = 55000;
+        }
+        else if (ukuran == '2' && j_kue == "Brownies Bites") {
+            u_kue = "8 pcs";
+            h_kue = 35000;
+        }
+
+        if( (ukuran == '1' || ukuran == '2' ) && j_kue == "Fudgy Brownies") cout << "Hanya terdapat 1 macam!\n";
+
     }
 
-    void costume_isi()
-    {
-        char isi;
+    // void costume_isi()
+    // {
+    //     char isi;
 
-        cout << "Rasa apa ?\n";
-        cout << "1. Ayam\n";
-        cout << "2. Ikan\n";
-        cout << "3. Keju\n";
-        cout << "Jawab : ";
-        cin >> isi;
+    //     cout << "Isi apa ?\n";
+    //     cout << "1. Ayam\n";
+    //     cout << "2. Ikan\n";
+    //     cout << "3. Keju\n";
+    //     cout << "Jawab : ";
+    //     cin >> isi;
 
-        if (isi == '1')
-            i_kue = "Ayam";
-        else if (isi == '2')
-            i_kue = "Ikan";
-        else if (isi == '3')
-            i_kue = "Keju";
-    }
+    //     if (isi == '1')
+    //         i_kue = "Ayam";
+    //     else if (isi == '2')
+    //         i_kue = "Ikan";
+    //     else if (isi == '3')
+    //         i_kue = "Keju";
+    // }
 
     void costume_list()
     {
         cout << "1. Rasa\n";
         cout << "2. Ukuran\n";
-        cout << "3. Isi\n";
-        cout << "4. Pesan\n";
+        //cout << "3. Isi\n";
+        cout << "3. Pesan\n";
     }
 
     void costume_kue()
@@ -207,10 +248,10 @@ public:
                 costume_ukuran();
                 break;
 
+            // case '3':
+            //     costume_isi();
+            //     break;
             case '3':
-                costume_isi();
-                break;
-            case '4':
                 cetak_pesanan_kue();
                 masih_milih = false;
                 active = false;
@@ -226,28 +267,34 @@ public:
     {
         char kueChoice;
         kue();
-        cout << "Pilih kue (1/2/3): ";
+        cout << "Pilih kue (1/2/3/4): ";
         cin >> kueChoice;
 
         switch (kueChoice)
         {
         case '1':
-            cout << "Anda memilih Kue Tart.\n";
-            j_kue = "Tart";
-            h_kue = 100;
+            cout << "Anda memilih Kue Burnt ChesseCake.\n";
+            j_kue = "Burnt ChesseCake";
+            h_kue = 20000;
             break;
         case '2':
-            cout << "Anda memilih Kue Madu.\n";
-            j_kue = "Madu";
-            h_kue = 200;
+            cout << "Anda memilih Kue Lotus ChesseCake.\n";
+            j_kue = "Kue Lotus ChesseCake";
+            h_kue = 16000;
             break;
         case '3':
-            cout << "Anda memilih Kue Butter.\n";
-            j_kue = "Butter";
-            h_kue = 300;
+            cout << "Anda memilih Brownies Bites.\n";
+            j_kue = "Brownies Bites";
+            h_kue = 35000;
+            break;
+        case '4':
+            cout << "Anda memilih Fudgy Brownies";
+            j_kue = "Fudgy Brownies";
+            h_kue = 60000;
             break;
         default:
             cout << "Pilihan tidak valid!\n";
+            kueChoice = '\0';
             break;
         }
         costume_kue();
@@ -255,9 +302,10 @@ public:
 
     void kue()
     {
-        cout << "1. Kue Tart\n";
-        cout << "2. Kue Madu\n";
-        cout << "3. Kue Butter\n";
+        cout << "1. Kue Burnt ChesseCake\n";
+        cout << "2. Kue Lotus ChesseCake\n";
+        cout << "3. Brownies Bites\n";
+        cout << "4. Fudgy Brownies\n";
     }
 
     void greetingHammer()
@@ -335,6 +383,10 @@ cout <<"              TO HAMMER BAKERY\n";
             
         } // punya while active
     }
+};
+
+class ORDER{
+
 };
 
 int main()
