@@ -4,10 +4,15 @@
 #include <fstream>
 using namespace std;
 
+struct User{
+    string name;
+    string pass;
+};
+
 class Bakery
 {
 private:
-    string name, pass;
+    User user;
     string j_kue,
         u_kue = "Sedang",
         i_kue = "Keju",
@@ -24,9 +29,9 @@ public:
     void regist()
     {
         cout << "nama: ";
-        cin >> name;
+        cin >> user.name;
         cout << "pass: ";
-        cin >> pass;
+        cin >> user.pass;
     }
 
     void login()
@@ -37,7 +42,7 @@ public:
         cout << "pass: ";
         cin >> b;
 
-        if (a == name && b == pass)
+        if (a == user.name && b == user.pass)
         {
             cout << "Berhasil!\n";
             masuk = true;
