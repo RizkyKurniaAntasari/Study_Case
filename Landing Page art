@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+cout<<"__        _______ _     ____ ___  __  __ _____" <<endl;
+cout<<"\\ \\      / / ____| |   / ___/ _ \\|  \\/  | ____|"<<endl;
+cout<<" \\ \\ /\\ / /|  _| | |  | |  | | | | |\\/| |  _|"  <<endl;
+cout<<"  \\ V  V / | |___| |__| |__| |_| | |  | | |___" <<endl;
+cout<<"   \\_/\\_/  |_____|_____\\____\\___/|_|  |_|_____|"<<endl;
+cout <<"              TO HAMMER BAKERY\n";
+    return 0;
+}
