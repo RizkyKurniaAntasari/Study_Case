@@ -1,4 +1,5 @@
-// <---------------------------------- [ D E V E L O P ] ---------------------------------->
+// <---------------------------------- [ H A M M E R ] ---------------------------------->
+// <---------------------------------- [ B A K E R Y ] ---------------------------------->
 #include <iostream>
 #include <iomanip>
 #include <deque>
@@ -7,6 +8,8 @@
 #include <vector>
 #include <unistd.h>
 using namespace std;
+
+// <---------------------------------[ U S E R  N E E D S]--------------------------------->
 
 struct User {
     string* name;
@@ -54,6 +57,8 @@ public:
         user = u;
     }
 
+// <---------------------------------[ R E G I S T ]--------------------------------->
+
     void regist() {
         cout << "==========================\n";
         cout << "|        Register        |\n";
@@ -63,6 +68,8 @@ public:
         cout << "Password: ";
         cin >> *user.pass;
     }
+
+// <---------------------------------[ L O G I N ]--------------------------------->
 
     void login() {
         string a, b;
@@ -125,6 +132,8 @@ public:
         file << "          " << temp << endl;
     }
 
+// <---------------------------------[ S O R T E D  P R I N T ]--------------------------------->
+
     void cetak_struk_sorted() {
         ofstream outputFile(*user.name + "_struk_sorted.txt");
 
@@ -138,6 +147,8 @@ public:
             cout << "Gagal membuka file untuk penulisan." << endl;
         }
     }
+
+// <---------------------------------[ P R I N T ]--------------------------------->
 
     void cetak_pesanan_kue() {
         cout << "____________________\n";
@@ -161,6 +172,8 @@ public:
             kustom_tulisan.erase(kustom_tulisan.begin()+kustom_tulisan.size()-1);
         }
     }
+
+// <---------------------------------[ C O S T U M E  S I Z E ]--------------------------------->
 
     void costume_ukuran() {
         char ukuran;
@@ -223,6 +236,8 @@ public:
     h_kue_list.push_back(h_kue_temp); // Tambahkan harga kue ke deque
 }
 
+// <---------------------------------[ M A S S A G E S ]--------------------------------->
+
 void custome_tulisan() {
     string temp = "-";
     cout << "Masukkan tulisan kustom : ";
@@ -236,6 +251,8 @@ void costume_list() {
     cout << "2. Tulisan\n";
     cout << "3. Pesan\n";
 }
+
+// <---------------------------------[ C O S T U M E  C A K E ]--------------------------------->
 
 void costume_kue() {
     bool masih_milih = true;
@@ -266,6 +283,9 @@ void costume_kue() {
         }
     }
 }
+
+// <---------------------------------[ R U N  C O D E ]--------------------------------->
+
 
 void pesanan() {
     char kueChoice;
@@ -301,6 +321,8 @@ void pesanan() {
     costume_kue();
 }
 
+// <---------------------------------[ C A K E  M E N U ]--------------------------------->
+
 void kue() {
     cout << "+------------------------------------------------------------+" << endl;
     cout << "| _  _                            ___       _                |" << endl;
@@ -331,6 +353,8 @@ void kue() {
     cout << "+------------------------------------------------------------+" << endl;
 }
 
+// <---------------------------------[ G R E A T I N G ]--------------------------------->
+
 void greetingHammer() {
     cout << "__        _______ _     ____ ___  __  __ _____" << endl;
     cout << "\\ \\      / / ____| |   / ___/ _ \\|  \\/  | ____|" << endl;
@@ -353,6 +377,8 @@ void greeting() {
         cout << "3. Exit\n";
         cout << "Pilihan: ";
         }
+
+// <---------------------------------[ R U N  C O D E ]--------------------------------->
 
     void run() {
     char menu;
@@ -438,6 +464,8 @@ void greeting() {
     } // punya while active
 }
 
+// <---------------------------------[ M E R G E ]--------------------------------->
+
 void merge(deque<double> &arr, int l, int m, int r) {
     int i, j, k;
     int n1 = m - l + 1;
@@ -477,6 +505,8 @@ void merge(deque<double> &arr, int l, int m, int r) {
     }
 }
 
+// <---------------------------------[ S O R T I N G ]--------------------------------->
+
 void mergeSort(deque<double> &arr, int l, int r) {
     if (l >= r)
         return; 
@@ -485,11 +515,14 @@ void mergeSort(deque<double> &arr, int l, int r) {
     mergeSort(arr, l, m);    
     mergeSort(arr, m + 1, r); 
     merge(arr, l, m, r);     
-}
+
+    }
 };
 
-int main() {
-Bakery bakery;
-bakery.run();
-return 0;
-}
+// <---------------------------------[ I N T  M A I N ]--------------------------------->
+
+// int main() {
+// Bakery bakery;
+// bakery.run();
+// return 0;
+// }
