@@ -362,6 +362,13 @@ void greeting() {
             system("clear");
             break;
         case '3':
+            system("clear");
+            sleep(1);
+            cout << " _____ _   _    _    _   _ _  __ __   _____  _   _ " << endl;
+            cout << "|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |" << endl;
+            cout << "  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |" << endl;
+            cout << "  | | |  _  |/ ___ \\| |\\  | . \\    | || |_| | |_| |" << endl;
+            cout << "  |_| |_| |_/_/   \\_\\_| \\_|_|\\_\\   |_| \\___/ \\___/ " << endl;
             active = false;
             break;
         default:
