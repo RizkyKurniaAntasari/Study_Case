@@ -1,3 +1,4 @@
+// <---------------------------------- [ D E V E L O P ] ---------------------------------->
 #include <iostream>
 #include <iomanip>
 #include <deque>
@@ -14,6 +15,8 @@ struct User {
 
 class Bakery {
 private:
+// <---------------------------------- [ V A R I A B L E] ---------------------------------->
+
     User user;
     deque<string> j_kue_list; // Menyimpan jenis kue
     deque<string> u_kue_list; // Menyimpan ukuran kue
@@ -29,8 +32,11 @@ private:
     double total = 0;
 
     char confirm;
+    char UCAPAN[31] = "Terimakasih Telah Berbelanja!\0";
 
 public:
+// <---------------------------------- [F U N C T I O N ] ---------------------------------->
+
     Bakery() {}
 
     Bakery(const User &u) {
@@ -67,6 +73,8 @@ public:
         }
     }
 
+// <---------------------------------- [ R E C E I P T  H E A D E R ] ---------------------------------->
+
     void printReceiptHeader(ofstream &file) {
         file << "===================================================================================" << endl;
         file << "                           Hammer Bakery               " << endl;
@@ -74,6 +82,8 @@ public:
         file << "                       Tel: (4916) 718-1521            " << endl;
         file << "===================================================================================" << endl;
     }
+
+// <---------------------------------- [ R E C E I P T  M A I N ] ---------------------------------->
 
     void printItemsSorted(ofstream &file) {
         mergeSort(h_kue_list, 0, h_kue_list.size() - 1);
@@ -90,13 +100,18 @@ public:
             total += subtotal;
         }
     }
+// <---------------------------------- [ R E C E I P T  F O O T E R ] ---------------------------------->
 
     void printReceiptFooter(ofstream &file, double total) {
+        string temp;
         file << "===================================================================================" << endl;
         file << fixed << setprecision(2);
         file << "Total                : " << "Rp. " << total << endl;
         file << "===================================================================================" << endl;
-        file << "       Terima kasih telah berbelanja!   " << endl;
+        for(auto &i : UCAPAN){
+            if(i != '\0') temp+=i;
+        }
+        file << "          " << temp << endl;
     }
 
     void cetak_struk_sorted() {
@@ -177,10 +192,15 @@ public:
             cout << "Anda memilih Brownies Bites dengan ukuran 8pcs\n";
             u_kue_temp = "8 pcs";
             h_kue_temp = 35000;
-        } else if ((ukuran == '1' || ukuran == '2') && j_kue_list.back() == "Fudgy Brownies") {
-            cout << "Hanya terdapat 1 macam!\n";
-            return;
-        } else {
+        } else if (ukuran == '1' && j_kue_list.back() == "Fudgy Brownies") {
+            u_kue_temp = "Whole";
+            h_kue_temp = 60000;
+        }
+        else if(ukuran == '2' && j_kue_list.back() == "Fudgy Brownies"){
+            cout << "Hanya terdapat Whole!\n";
+            u_kue_temp = "Whole";
+            h_kue_temp = 60000;
+        }else {
             cout << "Ukuran tidak valid!\n";
             return;
         }
@@ -396,16 +416,13 @@ void merge(deque<double> &arr, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    // Create temporary arrays
     double L[n1], R[n2];
 
-    // Copy data to temporary arrays L[] and R[]
     for (i = 0; i < n1; i++)
         L[i] = arr[l + i];
     for (j = 0; j < n2; j++)
         R[j] = arr[m + 1 + j];
 
-    // Merge the temporary arrays back into arr[l..r]
     i = 0;
     j = 0;
     k = l;
@@ -420,14 +437,12 @@ void merge(deque<double> &arr, int l, int m, int r) {
         k++;
     }
 
-    // Copy the remaining elements of L[], if there are any
     while (i < n1) {
         arr[k] = L[i];
         i++;
         k++;
     }
 
-    // Copy the remaining elements of R[], if there are any
     while (j < n2) {
         arr[k] = R[j];
         j++;
@@ -437,12 +452,12 @@ void merge(deque<double> &arr, int l, int m, int r) {
 
 void mergeSort(deque<double> &arr, int l, int r) {
     if (l >= r)
-        return; // Base case: array with 1 element is already sorted
+        return; 
 
     int m = l + (r - l) / 2;
-    mergeSort(arr, l, m);     // Sort first half
-    mergeSort(arr, m + 1, r); // Sort second half
-    merge(arr, l, m, r);      // Merge the sorted halves
+    mergeSort(arr, l, m);    
+    mergeSort(arr, m + 1, r); 
+    merge(arr, l, m, r);     
 }
 };
 
