@@ -37,7 +37,6 @@ private:
     double h_kue;
     double total = 0;
 
-
     char confirm;
     char kustom_tulisan[];
 
@@ -91,8 +90,6 @@ public:
             << right << setw(10) << "Harga"
             << right << setw(10) << "Subtotal" << endl;
         file << "-----------------------------------------------------------------------------------" << endl;
-
-        double total = 0;
 
         double subtotal = h_kue;
         file << left << setw(15) << "Kue " + j_kue
