@@ -360,7 +360,11 @@ public:
 
                 cetak_struk();
                 active = masuk = 0;
-                cout << "Program Selesai.";
+                cout<<" _____ _   _    _    _   _ _  __ __   _____  _   _ "        <<endl;
+                cout<<"|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |"   <<endl;
+                cout<<"  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |"     <<endl;
+                cout<<"  | | |  _  |/ ___ \\| |\\  | . \\    | || |_| | |_| |"     <<endl;
+                cout<<"  |_| |_| |_/_/   \\_\\_| \\_|_|\\_\\   |_| \\___/ \\___/ " <<endl;
             }
         } // punya while active
     }
