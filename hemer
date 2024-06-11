@@ -325,6 +325,8 @@ cout <<"              TO HAMMER BAKERY\n";
                 break;
             default:
                 cout << "opsi tidak sesuai!\n";
+                cin.clear();
+                cin.ignore();
                 break;
             }
 
