@@ -278,7 +278,10 @@ void pesanan() {
         break;
     default:
         cout << "Pilihan tidak valid!\n";
+        sleep(1);
+        system("clear");
         kueChoice = '\0';
+        pesanan();
         break;
     }
     costume_kue();
@@ -402,6 +405,9 @@ void greeting() {
 
             cetak_struk_sorted();
             active = masuk = 0;
+            sleep(2);
+            system("clear");
+            
             cout << " _____ _   _    _    _   _ _  __ __   _____  _   _ " << endl;
             cout << "|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |" << endl;
             cout << "  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |" << endl;
