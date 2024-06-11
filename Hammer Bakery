@@ -11,6 +11,14 @@ using namespace std;
 
 // <---------------------------------[ U S E R  N E E D S]--------------------------------->
 
+template <class T>
+struct COSUMER
+{
+    T username;
+    COSUMER() {}
+    COSUMER(T a) : username(a) {}
+};
+
 struct User
 {
     string *name;
@@ -49,7 +57,7 @@ private:
     double total = 0;
 
     char confirm;
-    char UCAPAN[31] = "Terimakasih Telah Berbelanja!\0";
+    char UCAPAN[31] = "Terimakasih Telah Berbelanja,\0";
 
 public:
     // <---------------------------------- [F U N C T I O N ] ---------------------------------->
@@ -135,6 +143,9 @@ public:
     void printReceiptFooter(ofstream &file, double total)
     {
         string temp;
+        COSUMER<string> costumer;
+        costumer.username = *user.name;
+        
         file << "===================================================================================" << endl;
         file << fixed << setprecision(2);
         file << "Total                : " << "Rp. " << total << endl;
@@ -144,7 +155,7 @@ public:
             if (i != '\0')
                 temp += i;
         }
-        file << "          " << temp << endl;
+        file << "          " << temp << ' ' << costumer.username << '!' << endl;
     }
 
     // <---------------------------------[ S O R T E D  P R I N T ]--------------------------------->
