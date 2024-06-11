@@ -88,21 +88,14 @@ public:
     }
 
     void printItems(ofstream& file) {
-        file << left << setw(15) << "Nama Barang"
-            << left << setw(10) << "Ukuran"
-            << left << setw(10) << "Tulisan"
-            << right << setw(5) << "Qty"
-            << right << setw(10) << "Harga"
-            << right << setw(10) << "Subtotal" << endl;
-        file << "-----------------------------------------------------------------------------------" << endl;
-
+        file << left << setw(15) << "Nama Barang" << ": " << j_kue << endl;
+        file << left << setw(15) << "Ukuran" << ": " << u_kue << endl;
+        file << left << setw(15) << "Tulisan" << ": " << kustom_tulisan << endl;
+        file << left << setw(15) << "Qty" << ": " << 1 << endl; // assuming quantity is always 1 in this case
+        file << left << setw(15) << "Harga" << ": Rp. " << fixed << setprecision(2) << h_kue << endl;
         double subtotal = h_kue;
-        file << left << setw(15) << j_kue
-            << left << setw(10) << u_kue
-            << right << setw(10) << strlen(kustom_tulisan)
-            << right << setw(5) << 1
-            << right << setw(10) << h_kue
-            << right << setw(10) << subtotal << endl;
+        file << left << setw(15) << "Subtotal" << ": Rp. " << fixed << setprecision(2) << subtotal << endl;
+        file << "-----------------------------------------------------------------------------------" << endl;
         total += subtotal;
     }
 
@@ -116,7 +109,7 @@ public:
 
     void cetak_struk()
     {
-        ofstream outputFile(user.name + "struk.txt");
+        ofstream outputFile(user.name + "_struk.txt");
 
         if (outputFile.is_open()) {
             printReceiptHeader(outputFile);
@@ -134,9 +127,7 @@ public:
     {
         cout << "____________________\n";
         cout << "Jenis  : " << j_kue;
-        cout << "\nRasa   : " << r_kue;
         cout << "\nUkuran : " << u_kue;
-        cout << "\nIsi    : " << i_kue;
         cout << "\nTulisan: " << kustom_tulisan;
         cout << "\nHarga  : " << h_kue;
         cout << "\n____________________";
@@ -325,8 +316,6 @@ cout <<"              TO HAMMER BAKERY\n";
                 break;
             default:
                 cout << "opsi tidak sesuai!\n";
-                cin.clear();
-                cin.ignore();
                 break;
             }
 
