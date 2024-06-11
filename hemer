@@ -7,6 +7,15 @@
 // }
 
 // <---------------------------------- [ D E V E L O P ] ---------------------------------->
+// <---------------------------------- [ A S L I ] ---------------------------------->
+// #include "Another_hammer.cpp"
+// int main(){
+//     Bakery bakery;
+//     bakery.run();
+//     return 0;
+// }
+
+// <---------------------------------- [ D E V E L O P ] ---------------------------------->
 #include <iostream>
 #include <iomanip>
 #include <deque>
@@ -21,6 +30,7 @@ struct User{
 };
 
 class ORDER;
+
 class Bakery
 {
 private:
@@ -37,10 +47,16 @@ private:
     double h_kue;
     double total = 0;
 
+
     char confirm;
     char kustom_tulisan[];
 
 public:
+    Bakery(){}
+
+    Bakery(const User &u){
+        user = u;
+    }
 
     friend class ORDER;
 
@@ -82,8 +98,6 @@ public:
 
     void printItems(ofstream& file) {
         file << left << setw(15) << "Nama Barang"
-            << left << setw(10) << "Rasa"
-            << left << setw(10) << "Isi"
             << left << setw(10) << "Ukuran"
             << left << setw(10) << "Tulisan"
             << right << setw(5) << "Qty"
@@ -92,9 +106,7 @@ public:
         file << "-----------------------------------------------------------------------------------" << endl;
 
         double subtotal = h_kue;
-        file << left << setw(15) << "Kue " + j_kue
-            << left << setw(10) << r_kue
-            << left << setw(10) << i_kue
+        file << left << setw(15) << j_kue
             << left << setw(10) << u_kue
             << right << setw(10) << strlen(kustom_tulisan)
             << right << setw(5) << 1
@@ -113,7 +125,7 @@ public:
 
     void cetak_struk()
     {
-        ofstream outputFile("struk.txt");
+        ofstream outputFile(user.name + "struk.txt");
 
         if (outputFile.is_open()) {
             printReceiptHeader(outputFile);
@@ -145,22 +157,6 @@ public:
             masuk = false;
             done = true;
         }
-    }
-
-    void costume_rasa()
-    {
-        char rasa;
-
-        cout << "Rasa apa ?\n";
-        cout << "1. Vanilla\n";
-        cout << "2. Coklat\n";
-        cout << "Jawab : ";
-        cin >> rasa;
-
-        if (rasa == '1')
-            r_kue = "Vanilla";
-        else if (rasa == '2')
-            r_kue = "Coklat";
     }
 
     void costume_ukuran()
@@ -205,25 +201,6 @@ public:
 
     }
 
-    // void costume_isi()
-    // {
-    //     char isi;
-
-    //     cout << "Isi apa ?\n";
-    //     cout << "1. Ayam\n";
-    //     cout << "2. Ikan\n";
-    //     cout << "3. Keju\n";
-    //     cout << "Jawab : ";
-    //     cin >> isi;
-
-    //     if (isi == '1')
-    //         i_kue = "Ayam";
-    //     else if (isi == '2')
-    //         i_kue = "Ikan";
-    //     else if (isi == '3')
-    //         i_kue = "Keju";
-    // }
-    
     void custome_tulisan() {
     cout << "Masukkan tulisan kustom : ";
     cin.ignore();
@@ -232,11 +209,9 @@ public:
 
     void costume_list()
     {
-        cout << "1. Rasa\n";
-        cout << "2. Ukuran\n";
-        cout << "3. Tulisan\n";
-        //cout << "3. Isi\n";
-        cout << "4. Pesan\n";
+        cout << "1. Ukuran\n";
+        cout << "2. Tulisan\n";
+        cout << "3. Pesan\n";
     }
 
     void costume_kue()
@@ -252,22 +227,14 @@ public:
             switch (kueCostume)
             {
             case '1':
-                costume_rasa();
-                break;
-
-            case '2':
                 costume_ukuran();
                 break;
 
-            // case '3':
-            //     costume_isi();
-            //     break;
-
-            case '3':
+            case '2':
                 custome_tulisan();
                 break;
 
-            case '4':
+            case '3':
                 cetak_pesanan_kue();
                 masih_milih = false;
                 active = false;
