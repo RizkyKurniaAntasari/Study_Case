@@ -124,6 +124,10 @@ public:
             masuk = false;
             done = true;
         }
+
+        if(h_kue_list.empty()){
+
+        }
     }
 
     void costume_ukuran()
@@ -233,22 +237,22 @@ public:
         case '1':
             cout << "Anda memilih Kue Burnt ChesseCake.\n";
             j_kue_list.push_back("Burnt ChesseCake");
-            h_kue_list.push_back(20000);
+            //h_kue_list.push_back(20000);
             break;
         case '2':
             cout << "Anda memilih Kue Lotus ChesseCake.\n";
             j_kue_list.push_back("Kue Lotus ChesseCake");
-            h_kue_list.push_back(16000);
+            //h_kue_list.push_back(16000);
             break;
         case '3':
             cout << "Anda memilih Brownies Bites.\n";
             j_kue_list.push_back("Brownies Bites");
-            h_kue_list.push_back(35000);
+            //h_kue_list.push_back(35000);
             break;
         case '4':
-            cout << "Anda memilih Fudgy Brownies";
+            cout << "Anda memilih Fudgy Brownies.\n";
             j_kue_list.push_back("Fudgy Brownies");
-            h_kue_list.push_back(60000);
+            //h_kue_list.push_back(60000);
             break;
         default:
             cout << "Pilihan tidak valid!\n";
