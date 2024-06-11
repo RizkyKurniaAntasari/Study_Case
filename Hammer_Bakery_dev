@@ -134,10 +134,18 @@ public:
     {
         char ukuran;
 
-        cout << "Ukuran apa ?\n";
-        cout << "1. Whole\n";
-        cout << "2. Slice\n";
-        cout << "Jawab : ";
+        if(j_kue_list.back() != "Brownies Bites"){
+            cout << "Ukuran apa ?\n";
+            cout << "1. Whole\n";
+            cout << "2. Slice\n";
+            cout << "Jawab : ";
+        }else {
+            cout << "Berapa PCS ?\n";
+            cout << "1. 16 PCS\n";
+            cout << "2. 8 PCS\n";
+            cout << "Jawab : ";
+        }
+
         cin >> ukuran;
 
         string u_kue_temp;
