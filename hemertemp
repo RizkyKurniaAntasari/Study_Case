@@ -9,8 +9,19 @@
 using namespace std;
 
 struct User {
-    string name;
-    string pass;
+    string* name;
+    string* pass;
+
+    User(){
+        name = new string();
+        pass = new string();
+    }
+
+    ~User(){
+        delete name;
+        delete pass;
+    }
+
 };
 
 class Bakery {
@@ -48,9 +59,9 @@ public:
         cout << "|        Register        |\n";
         cout << "==========================\n";
         cout << "Username: ";
-        cin >> user.name;
+        cin >> *user.name;
         cout << "Password: ";
-        cin >> user.pass;
+        cin >> *user.pass;
     }
 
     void login() {
@@ -63,7 +74,7 @@ public:
         cout << "Password: ";
         cin >> b;
 
-        if (a == user.name && b == user.pass) {
+        if (a == *user.name && b == *user.pass) {
             cout << "Berhasil!\n";
             sleep(1);
             masuk = true;
@@ -115,7 +126,7 @@ public:
     }
 
     void cetak_struk_sorted() {
-        ofstream outputFile(user.name + "_struk_sorted.txt");
+        ofstream outputFile(*user.name + "_struk_sorted.txt");
 
         if (outputFile.is_open()) {
             printReceiptHeader(outputFile);
@@ -144,7 +155,10 @@ public:
             done = true;
             IKT++;
         } else if (confirm == 'n') {
-            // Tidak melakukan apa-apa jika pesanan tidak dikonfirmasi
+            u_kue_list.pop_back();
+            j_kue_list.pop_back();
+            h_kue_list.pop_back();
+            kustom_tulisan.erase(kustom_tulisan.begin()+kustom_tulisan.size()-1);
         }
     }
 
@@ -210,7 +224,7 @@ public:
 }
 
 void custome_tulisan() {
-    string temp = " ";
+    string temp = "-";
     cout << "Masukkan tulisan kustom : ";
     cin.ignore();
     getline(cin, temp);
@@ -278,7 +292,10 @@ void pesanan() {
         break;
     default:
         cout << "Pilihan tidak valid!\n";
+        sleep(1);
+        system("clear");
         kueChoice = '\0';
+        pesanan();
         break;
     }
     costume_kue();
@@ -359,6 +376,13 @@ void greeting() {
             system("clear");
             break;
         case '3':
+            system("clear");
+            sleep(1);
+            cout << " _____ _   _    _    _   _ _  __ __   _____  _   _ " << endl;
+            cout << "|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |" << endl;
+            cout << "  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |" << endl;
+            cout << "  | | |  _  |/ ___ \\| |\\  | . \\    | || |_| | |_| |" << endl;
+            cout << "  |_| |_| |_/_/   \\_\\_| \\_|_|\\_\\   |_| \\___/ \\___/ " << endl;
             active = false;
             break;
         default:
@@ -402,6 +426,9 @@ void greeting() {
 
             cetak_struk_sorted();
             active = masuk = 0;
+            sleep(2);
+            system("clear");
+            
             cout << " _____ _   _    _    _   _ _  __ __   _____  _   _ " << endl;
             cout << "|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |" << endl;
             cout << "  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |" << endl;
@@ -460,7 +487,6 @@ void mergeSort(deque<double> &arr, int l, int r) {
     merge(arr, l, m, r);     
 }
 };
-
 
 int main() {
 Bakery bakery;
