@@ -3,6 +3,7 @@
 #include <deque>
 #include <string>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 struct User{
@@ -20,6 +21,9 @@ private:
     deque<string> u_kue_list; // Menyimpan ukuran kue
     deque<double> h_kue_list; // Menyimpan harga kue
 
+    vector<string> kustom_tulisan;
+    int IKT = 0; // index kostum tulisan
+
     bool masuk = false;
     bool active = true;
     bool done = false;
@@ -27,7 +31,7 @@ private:
     double total = 0;
 
     char confirm;
-    char kustom_tulisan[1000];
+    //char kustom_tulisan[1000];
 
 public:
     Bakery(){}
@@ -75,7 +79,7 @@ public:
         for (size_t i = 0; i < j_kue_list.size(); ++i) {
             file << left << setw(15) << "Nama Barang" << ": " << j_kue_list[i] << endl;
             file << left << setw(15) << "Ukuran" << ": " << u_kue_list[i] << endl;
-            file << left << setw(15) << "Tulisan" << ": " << kustom_tulisan << endl;
+            file << left << setw(15) << "Tulisan" << ": " << kustom_tulisan[i] << endl;
             file << left << setw(15) << "Qty" << ": " << 1 << endl;
             file << left << setw(15) << "Harga" << ": Rp. " << fixed << setprecision(2) << h_kue_list[i] << endl;
             double subtotal = h_kue_list[i];
@@ -113,7 +117,7 @@ public:
         cout << "____________________\n";
         cout << "Jenis  : " << j_kue_list.back();
         cout << "\nUkuran : " << u_kue_list.back();
-        cout << "\nTulisan: " << kustom_tulisan;
+        cout << "\nTulisan: " << kustom_tulisan[IKT];
         cout << "\nHarga  : " << h_kue_list.back();
         cout << "\n____________________";
 
@@ -123,11 +127,10 @@ public:
         if(confirm == 'y'){
             masuk = false;
             done = true;
+            IKT++;
         }
 
-        if(h_kue_list.empty()){
-
-        }
+        //if(h_kue_list.empty()){}
     }
 
     void costume_ukuran()
@@ -189,14 +192,16 @@ public:
     }
 
     void custome_tulisan() {
+        string temp =" ";
         cout << "Masukkan tulisan kustom : ";
         cin.ignore();
-        cin.getline(kustom_tulisan, 1000);
+        getline(cin,temp);
+        kustom_tulisan.push_back(temp);
     }
 
     void costume_list()
     {
-        cout << "1. Ukuran\n";
+        cout << "\n1. Ukuran\n";
         cout << "2. Tulisan\n";
         cout << "3. Pesan\n";
     }
@@ -209,7 +214,7 @@ public:
             char kueCostume;
             costume_list();
 
-            cout << "Pilih (1/2/3/4) : ";
+            cout << "Pilih (1/2/3) : ";
             cin >> kueCostume;
             switch (kueCostume)
             {
@@ -360,11 +365,7 @@ public:
 
                 cetak_struk();
                 active = masuk = 0;
-                cout<<" _____ _   _    _    _   _ _  __ __   _____  _   _ "        <<endl;
-                cout<<"|_   _| | | |  / \\  | \\ | | |/ / \\ \\ / / _ \\| | | |"   <<endl;
-                cout<<"  | | | |_| | / _ \\ |  \\| | ' /   \\ V / | | | | | |"     <<endl;
-                cout<<"  | | |  _  |/ ___ \\| |\\  | . \\    | || |_| | |_| |"     <<endl;
-                cout<<"  |_| |_| |_/_/   \\_\\_| \\_|_|\\_\\   |_| \\___/ \\___/ " <<endl;
+                cout << "Program Selesai.";
             }
         } // punya while active
     }
